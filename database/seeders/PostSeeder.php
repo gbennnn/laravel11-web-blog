@@ -23,7 +23,7 @@ class PostSeeder extends Seeder
         ];
 
         foreach ($judul as $title) {
-            Post::factory()->create([
+            Post::create([
                 'title' => $title,
                 'slug' => Str::slug($title),
                 'description' => Str::random(100),
