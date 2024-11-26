@@ -19,7 +19,7 @@ class BlogController extends Controller
         $data = Post::where('user_id', $user->id)->orderBy('id', 'desc')->get();
         // print_r($data);
 
-        return view('member.blogs.index');
+        return view('member.blogs.index', compact('data'));
     }
 
     /**
