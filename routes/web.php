@@ -19,6 +19,7 @@ Route::middleware('auth')->group(function () {
 
     // Blog Route
     Route::get('/member/blogs', [BlogController::class, 'index']);
+    Route::get('/member/blogs/{post}/edit', [BlogController::class, 'edit']);
 });
 
 require __DIR__ . '/auth.php';
