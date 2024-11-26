@@ -21,7 +21,21 @@ class PostSeeder extends Seeder
             'Advanced CSS Techniques',
             'Getting Started with React',
         ];
+
+
+
         foreach ($judul as $title) {
+
+            // Mengatasi unique slug dengan menambahkan angka di belakang slug
+            $slug = Str::slug($title);
+            $slugOri = $slug;
+            $slugCount = 1;
+
+            while (Post::where('slug', $slug)->exists()) {
+                $slug = $slugOri . '-' . $slugCount;
+                $slugCount++;
+            }
+
             Post::create([
                 'title' => $title,
                 'slug' => Str::slug($title),
