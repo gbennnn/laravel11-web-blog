@@ -14,20 +14,19 @@ class PostSeeder extends Seeder
      */
     public function run(): void
     {
-        $judul = [
-            'Laravel 8',
-            'Laravel 9',
-            'Laravel 10',
-            'Laravel 11',
-            'Laravel 12',
+        $judul =  [
+            'Understanding PHP 8',
+            'Mastering JavaScript',
+            'Introduction to Vue.js',
+            'Advanced CSS Techniques',
+            'Getting Started with React',
         ];
-
         foreach ($judul as $title) {
             Post::create([
                 'title' => $title,
                 'slug' => Str::slug($title),
-                'description' => Str::random(100),
-                'content' => Str::random(1000),
+                'description' => 'Deskripsi untuk ' . $title,
+                'content' => 'Kontent untuk ' . $title,
                 'status' => 'publish',
                 'thumbnail' => 'https://via.placeholder.com/640x480.png',
                 'user_id' => 1,
