@@ -22,7 +22,7 @@
                         <tbody>
                             @foreach ($data as $item => $value)
                                 <tr>
-                                    <td class="border px-6 py-4 text-center">{{ $loop->iteration }}</td>
+                                    <td class="border px-6 py-4 text-center">{{ $data->firstItem() + $item }}</td>
                                     <td class="border px-6 py-4">
                                         {{ $value->title }}
                                         <div class="block lg:hidden text-sm text-gray-500">
@@ -44,6 +44,9 @@
                             @endforeach
                         </tbody>
                     </table>
+                </div>
+                <div class="p-5">
+                    {{ $data->links() }}
                 </div>
             </div>
         </div>
