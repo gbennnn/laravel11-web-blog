@@ -26,7 +26,8 @@
                             {{-- Kolom edit title --}}
                             <div>
                                 <x-input-label for="title" value="Title" />
-                                <x-text-input id="title" name="title" type="text" class="mt-1 block w-full" />
+                                <x-text-input id="title" name="title" type="text" class="mt-1 block w-full"
+                                    value="{{ old('title', $data->title) }}" />
 
                             </div>
 
@@ -34,7 +35,7 @@
                             <div>
                                 <x-input-label for="description" value="Description" />
                                 <x-text-input id="description" name="description" type="text"
-                                    class="mt-1 block w-full" />
+                                    class="mt-1 block w-full" value="{{ old('description', $data->description) }}" />
 
                             </div>
 
@@ -48,7 +49,7 @@
 
                             {{-- Kolom edit konten dengan text editor from trix --}}
                             <div>
-                                <input id="x" type="hidden" name="content">
+                                <input id="x" type="hidden" value="{!! old('content', $data->content) !!}" name="content">
                                 <trix-editor input="x"
                                     class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm min-h-80"></trix-editor>
                             </div>
@@ -57,8 +58,13 @@
                             <div>
                                 <select name="status" id="status"
                                     class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
-                                    <option value="draft">Simpan sebagai draft</option>
-                                    <option value="publish">Publish</option>
+                                    <option value="draft"
+                                        {{ old('status', $data->status) == 'draft' ? 'selected' : '' }}>Simpan sebagai
+                                        draft
+                                    </option>
+                                    <option value="publish"
+                                        {{ old('status', $data->status) == 'publish' ? 'selected' : '' }}>Publish
+                                    </option>
                                 </select>
                             </div>
 
