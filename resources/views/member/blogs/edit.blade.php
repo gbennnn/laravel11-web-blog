@@ -46,6 +46,30 @@
 
                             </div>
 
+                            {{-- Kolom edit konten dengan text editor from trix --}}
+                            <div>
+                                <input id="x" type="hidden" name="content">
+                                <trix-editor input="x"
+                                    class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm min-h-80"></trix-editor>
+                            </div>
+
+                            {{-- Kolom status --}}
+                            <div>
+                                <select name="status" id="status"
+                                    class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
+                                    <option value="draft">Simpan sebagai draft</option>
+                                    <option value="publish">Publish</option>
+                                </select>
+                            </div>
+
+                            {{-- Button --}}
+                            <div class="flex items-center gap-4">
+                                <a href="{{ route('member.blogs.index') }}">
+                                    <x-secondary-button>Kembali</x-secondary-button>
+                                </a>
+                                <x-primary-button>Simpan</x-primary-button>
+                            </div>
+
                         </form>
                     </section>
                 </div>
