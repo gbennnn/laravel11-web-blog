@@ -49,15 +49,13 @@
 
                             {{-- Kolom edit konten dengan text editor from trix --}}
                             <div>
-                                <input id="x" type="hidden" value="{!! old('content', $data->content) !!}" name="content">
-                                <trix-editor input="x"
-                                    class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm min-h-80"></trix-editor>
+                                <x-textarea-trix value="{{ $data->content }}" id="x"
+                                    name="content"></x-textarea-trix>
                             </div>
 
                             {{-- Kolom status --}}
                             <div>
-                                <select name="status" id="status"
-                                    class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
+                                <x-select name="status">
                                     <option value="draft"
                                         {{ old('status', $data->status) == 'draft' ? 'selected' : '' }}>Simpan sebagai
                                         draft
@@ -65,7 +63,7 @@
                                     <option value="publish"
                                         {{ old('status', $data->status) == 'publish' ? 'selected' : '' }}>Publish
                                     </option>
-                                </select>
+                                </x-select>
                             </div>
 
                             {{-- Button --}}
