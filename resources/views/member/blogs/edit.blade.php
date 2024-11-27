@@ -20,7 +20,32 @@
                         </header>
 
                         <form method="post" action="" class="mt-6 space-y-6" enctype="multipart/form-data">
-                            
+                            @csrf
+                            @method('PUT')
+
+                            {{-- Kolom edit title --}}
+                            <div>
+                                <x-input-label for="title" value="Title" />
+                                <x-text-input id="title" name="title" type="text" class="mt-1 block w-full" />
+
+                            </div>
+
+                            {{-- Kolom edit deskripsi --}}
+                            <div>
+                                <x-input-label for="description" value="Description" />
+                                <x-text-input id="description" name="description" type="text"
+                                    class="mt-1 block w-full" />
+
+                            </div>
+
+                            {{-- Kolom edit thumbnail --}}
+                            <div>
+                                <x-input-label for="file_input" value="Thumbnail" />
+                                <input type="file" id="file_input" name="file_input"
+                                    class="w-full border border-gray-300 rounded-md" />
+
+                            </div>
+
                         </form>
                     </section>
                 </div>
