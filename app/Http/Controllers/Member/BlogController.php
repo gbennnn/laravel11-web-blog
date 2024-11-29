@@ -62,6 +62,7 @@ class BlogController extends Controller
      */
     public function update(Request $request, Post $post)
     {
+        // Untuk memvalidasi data yang dikirim
         $request->validate([
             'title'=>'required',
             'content'=>'required',
@@ -74,15 +75,27 @@ class BlogController extends Controller
             'thumbnail.max'=>'Ukuran file maksimal 10MB',
         ]);
 
+        // Cek apakah ada file thumbnail yang dikirim
+        if($request->hasFile('thumbnail')){
+            $image = $request->file('thumbnail');
+            $imageName = time().'_'.$image->getClientOriginalName();
+            $destinationPath = public_path('storage/thumbnails');
+            $image->move($destinationPath, $imageName);
+        }
+
+        // Update data
         $data=[
             'title'=>$request->title,
             'description'=>$request->description,
             'content'=>$request->content,
-            'status'=>$request->status
+            'status'=>$request->status,
+            'thumbnail'=>isset($imageName) ? $imageName : $post->thumbnail
         ];
 
+        // Update data ke database
         Post::where('id', $post->id)->update($data);
 
+        // Redirect ke halaman index
         return redirect()->route('member.blogs.index')->with('success', 'Data berhasil diupdate');
     }
 
