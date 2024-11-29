@@ -73,6 +73,13 @@ class BlogController extends Controller
             'thumbnail.mimes'=>'Ekstensi file yang diperbolehkan: jpeg, png, jpg',
             'thumbnail.max'=>'Ukuran file maksimal 10MB',
         ]);
+
+        Post::where('id', $post->id)->update([
+            'title'=>$request->title,
+            'content'=>$request->content,
+        ]);
+
+        return redirect()->route('member.blogs.index')->with('success', 'Data berhasil diupdate');
     }
 
     /**
