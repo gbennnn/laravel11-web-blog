@@ -19,7 +19,7 @@
                             </p>
                         </header>
 
-                        <form method="post" action="{{ route('member.blogs.update', ['post' => $data->id]) }}"
+                        <form method="post" action="{{ route('member.blogs.update', ['blog' => $data->id]) }}"
                             class="mt-6 space-y-6" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
@@ -50,7 +50,7 @@
 
                             {{-- Kolom edit konten dengan text editor from trix --}}
                             <div>
-                                <x-textarea-trix value="{{ $data->content }}" id="x"
+                                <x-textarea-trix value="{!! old('content', $data->content) !!}" id="x"
                                     name="content"></x-textarea-trix>
                             </div>
 
