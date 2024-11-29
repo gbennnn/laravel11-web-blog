@@ -18,8 +18,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     // Blog Route
-    Route::get('/member/blogs', [BlogController::class, 'index']);
-    Route::get('/member/blogs/{post}/edit', [BlogController::class, 'edit']);
+    // Route::get('/member/blogs', [BlogController::class, 'index']);
+    // Route::get('/member/blogs/{post}/edit', [BlogController::class, 'edit']);
 
     Route::resource('member/blogs', BlogController::class)->names([
         'index' => 'member.blogs.index',
@@ -29,6 +29,8 @@ Route::middleware('auth')->group(function () {
         'edit' => 'member.blogs.edit',
         'update' => 'member.blogs.update',
         'destroy' => 'member.blogs.destroy',
+    ])->parameters([
+        'blogs' => 'post'
     ]); // This will create all the routes for the BlogController
 });
 
