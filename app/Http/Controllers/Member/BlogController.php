@@ -79,7 +79,7 @@ class BlogController extends Controller
         if($request->hasFile('thumbnail')){
             $image = $request->file('thumbnail');
             $imageName = time().'_'.$image->getClientOriginalName();
-            $destinationPath = public_path('storage/thumbnails');
+            $destinationPath = public_path(getenv('CUSTOM_THUMBNAIL_LOCATION'));
             $image->move($destinationPath, $imageName);
         }
 
