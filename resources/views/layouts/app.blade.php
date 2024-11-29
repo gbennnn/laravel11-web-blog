@@ -40,6 +40,16 @@
                             </ul>
                         </div>
                     @endif
+
+                    @session('success')
+                        <div class="max-w-7xl mx-auto bg-green-500 p-3 mt-3 text-white rounded-md">
+                            <ul>
+                                {{ session('success') }}
+                            </ul>
+                        </div>
+                    @endsession ($errors->any())
+
+
                 </div>
             </header>
         @endisset
