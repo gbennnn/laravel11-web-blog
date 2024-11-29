@@ -19,9 +19,6 @@
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.8/dist/trix.css">
     <script type="text/javascript" src="https://unpkg.com/trix@2.0.8/dist/trix.umd.min.js"></script>
 
-    <!-- Lightbox CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
-
 </head>
 
 <body class="font-sans antialiased">
@@ -62,9 +59,6 @@
             {{ $slot }}
         </main>
     </div>
-
-    <!-- Lightbox JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
 </body>
 
 </html>
