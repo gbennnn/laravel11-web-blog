@@ -45,8 +45,8 @@
                                 <x-input-label for="file_input" value="Thumbnail" />
 
                                 @isset($data->thumbnail)
-                                    <img src="{{ asset('storage/thumbnails/' . $data->thumbnail) }}" alt="thumbnail"
-                                        class="w-1/4 h-1/4 rounded-md mb-4" />
+                                    <img src="{{ asset(getenv(CUSTOM_THUMBNAIL_LOCATION) . $data->thumbnail) }}"
+                                        alt="thumbnail" class="w-1/4 h-1/4 rounded-md mb-4" />
                                 @endisset
 
                                 <input type="file" id="file_input" name="thumbnail"
