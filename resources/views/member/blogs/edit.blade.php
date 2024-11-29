@@ -19,7 +19,8 @@
                             </p>
                         </header>
 
-                        <form method="post" action="" class="mt-6 space-y-6" enctype="multipart/form-data">
+                        <form method="post" action="{{ route('member.blogs.update', ['post' => $data->id]) }}"
+                            class="mt-6 space-y-6" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
 
@@ -42,7 +43,7 @@
                             {{-- Kolom edit thumbnail --}}
                             <div>
                                 <x-input-label for="file_input" value="Thumbnail" />
-                                <input type="file" id="file_input" name="file_input"
+                                <input type="file" id="file_input" name="thumbnail"
                                     class="w-full border border-gray-300 rounded-md" />
 
                             </div>
