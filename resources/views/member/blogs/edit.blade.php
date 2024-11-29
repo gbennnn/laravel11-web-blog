@@ -46,13 +46,15 @@
 
                                 @isset($data->thumbnail)
                                     <img src="{{ asset(getenv('CUSTOM_THUMBNAIL_LOCATION') . $data->thumbnail) }}"
-                                        alt="thumbnail" class="w-1/4 h-1/4 rounded-md mb-4" />
+                                        alt="thumbnail" class="w-1/4 h-1/4 rounded-md mb-4 cursor-pointer" id="thumbnail" />
+                                @else
+                                    <p class="text-gray-500">No thumbnail available</p>
                                 @endisset
 
                                 <input type="file" id="file_input" name="thumbnail"
                                     class="w-full border border-gray-300 rounded-md" />
-
                             </div>
+
 
                             {{-- Kolom edit konten dengan text editor from trix --}}
                             <div>
@@ -87,4 +89,30 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal Box untuk Preview Thumbnail Image -->
+    <div id="imageModal" class="hidden fixed z-10 inset-0 overflow-y-auto">
+        <div class="flex items-center justify-center min-h-screen">
+            <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+                <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+            </div>
+            <div class="bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:max-w-lg sm:w-full">
+                <img id="modalImage" src="" alt="Preview" class="w-full">
+            </div>
+        </div>
+    </div>
+
+    {{-- JS untuk menghandle modal box thumbnail --}}
+    <script>
+        document.getElementById('thumbnail').addEventListener('click', function() {
+            var modal = document.getElementById('imageModal');
+            var modalImage = document.getElementById('modalImage');
+            modalImage.src = this.src;
+            modal.classList.remove('hidden');
+        });
+
+        document.getElementById('imageModal').addEventListener('click', function() {
+            this.classList.add('hidden');
+        });
+    </script>
 </x-app-layout>
