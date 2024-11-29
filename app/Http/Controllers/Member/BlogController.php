@@ -77,6 +77,12 @@ class BlogController extends Controller
 
         // Cek apakah ada file thumbnail yang dikirim
         if($request->hasFile('thumbnail')){
+
+            // Hapus file thumbnail yang lama
+            if(isset($post->thumbnail) && file_exists(public_path(getenv('CUSTOM_THUMBNAIL_LOCATION')).$post->thumbnail)){
+                unlink(public_path(getenv('CUSTOM_THUMBNAIL_LOCATION')).$post->thumbnail);
+            }
+
             $image = $request->file('thumbnail');
             $imageName = time().'_'.$image->getClientOriginalName();
             $destinationPath = public_path(getenv('CUSTOM_THUMBNAIL_LOCATION'));
