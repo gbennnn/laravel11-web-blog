@@ -74,10 +74,14 @@ class BlogController extends Controller
             'thumbnail.max'=>'Ukuran file maksimal 10MB',
         ]);
 
-        Post::where('id', $post->id)->update([
+        $data=[
             'title'=>$request->title,
+            'description'=>$request->description,
             'content'=>$request->content,
-        ]);
+            'status'=>$request->status
+        ];
+
+        Post::where('id', $post->id)->update($data);
 
         return redirect()->route('member.blogs.index')->with('success', 'Data berhasil diupdate');
     }
