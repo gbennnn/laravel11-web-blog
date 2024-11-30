@@ -134,7 +134,7 @@ class BlogController extends Controller
             'content'=>$request->content,
             'status'=>$request->status,
             'thumbnail'=>isset($imageName) ? $imageName : $post->thumbnail,
-            'slug'=>$this->generateSlug($post->id, $request->title)
+            'slug'=>$this->generateSlug($request->title, $post->id)
         ];
 
         // Update data ke database
@@ -160,7 +160,7 @@ class BlogController extends Controller
         }
         
         Post::where('id', $post->id)->delete();
-        
+
         return redirect()->route('member.blogs.index')->with('success', 'Data berhasil dihapus');
 
     }
