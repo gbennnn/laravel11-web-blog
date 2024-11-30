@@ -38,7 +38,9 @@
                                             class="text-blue-600 hover:text-blue-400 px-2">edit</a>
                                         <a href='' class="text-blue-600 hover:text-blue-400 px-2">lihat</a>
 
-                                        <form action="" method="POST" class="inline">
+                                        <form action="{{ route('member.blogs.destroy', ['post'=>$value->id]) }}" method="POST" onsubmit="return confirm('Yakin akan menghapus data ini?')" class="inline">
+                                            @ssrf
+                                            @method('delete')
                                             <button type=' submit' class='text-red-600 hover:text-red-400 px-2'>
                                                 hapus
                                             </button>
