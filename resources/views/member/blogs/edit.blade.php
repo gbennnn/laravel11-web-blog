@@ -24,7 +24,7 @@
                             @csrf
                             @method('PUT')
 
-                            {{-- Kolom edit title --}}
+                            {{-- Kolom edit Judul --}}
                             <div>
                                 <x-input-label for="title" value="Title" />
                                 <x-text-input id="title" name="title" type="text" class="mt-1 block w-full"
