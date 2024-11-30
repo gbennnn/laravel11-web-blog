@@ -36,7 +36,44 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Untuk memvalidasi data yang dikirim
+        $request->validate([
+            'title'=>'required',
+            'content'=>'required',
+            'thumbnail'=>'required|image|mimes:jpeg,png,jpg|max:10240',
+        ], [
+            'title.required'=>'Judul wajib diisi',
+            'content.required'=>'Konten wajib diisi',
+            'thumbnail.required'=>'Thumbnail wajib diisi',
+            'thumbnail.image'=>'Hanya file gambar yang diperbolehkan',
+            'thumbnail.mimes'=>'Ekstensi file yang diperbolehkan: jpeg, png, jpg',
+            'thumbnail.max'=>'Ukuran file maksimal 10MB',
+        ]);
+
+        // Cek apakah ada file thumbnail yang dikirim
+        if($request->hasFile('thumbnail')){
+            $image = $request->file('thumbnail');
+            $imageName = time().'_'.$image->getClientOriginalName();
+            $destinationPath = public_path(getenv('CUSTOM_THUMBNAIL_LOCATION'));
+            $image->move($destinationPath, $imageName);
+        }
+
+        // Insert data
+        $data=[
+            'title'=>$request->title,
+            'description'=>$request->description,
+            'content'=>$request->content,
+            'status'=>$request->status,
+            'thumbnail'=>$imageName,
+            'slug'=>$this->generateSlug($request->title),
+            'user_id'=>Auth::id()
+        ];
+
+        // Insert data ke database
+        Post::create($data);
+
+        // Redirect ke halaman index
+        return redirect()->route('member.blogs.index')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -116,7 +153,7 @@ class BlogController extends Controller
     }
 
 
-    private function generateSlug($id, $title){
+    private function generateSlug( $title, $id=null){
         $slug = Str::slug($title);
         $count = Post::where('slug', $slug)->when($id, function($query, $id){
             return $query->where('id', '!=', $id);
