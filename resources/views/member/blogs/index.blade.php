@@ -1,10 +1,20 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Pengaturan Blog <a href="{{ route('member.blogs.create') }}" class="bg-blue-500 p-2 rounded-md text-white text-sm">Tambah Tulisan</a>
+            Pengaturan Blog
         </h2>
     </x-slot>
-
+    
+    {{-- Tombol Tambah Tulisan --}}
+    <div class="pt-5 max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <h2>
+            <a href="{{ route('member.blogs.create') }}" class="bg-blue-500 p-2 rounded-md text-white text-sm flex items-center w-fit">
+                <span class="text-2xl font-extrabold mr-2">+</span>
+                Tambah Tulisan
+            </a>
+        </h2>
+    </div>
+    
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white shadow-sm sm:rounded-lg overflow-x-auto">
