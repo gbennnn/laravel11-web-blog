@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Edit Tulisan
+            Tambah Tulisan
         </h2>
     </x-slot>
     <div class="py-12">
@@ -11,54 +11,46 @@
                     <section>
                         <header>
                             <h2 class="text-lg font-medium text-gray-900">
-                                Edit Data Tulisan
+                                Tambah Tulisan
                             </h2>
 
                             <p class="mt-1 text-sm text-gray-600">
-                                Silakan melakukan perubahan data
+                                Silakan melakukan penambahan data
                             </p>
                         </header>
 
-                        <form method="post" action="{{ route('member.blogs.update', ['post' => $data->id]) }}"
+                        <form method="post" action="{{ route('member.blogs.create', ['post' => $data->id]) }}"
                             class="mt-6 space-y-6" enctype="multipart/form-data">
                             @csrf
-                            @method('PUT')
 
-                            {{-- Kolom edit title --}}
+                            {{-- Kolom Tambah title --}}
                             <div>
                                 <x-input-label for="title" value="Title" />
                                 <x-text-input id="title" name="title" type="text" class="mt-1 block w-full"
-                                    value="{{ old('title', $data->title) }}" />
+                                    value="{{ old('title') }}" />
 
                             </div>
 
-                            {{-- Kolom edit deskripsi --}}
+                            {{-- Kolom Tambah deskripsi --}}
                             <div>
                                 <x-input-label for="description" value="Description" />
                                 <x-text-input id="description" name="description" type="text"
-                                    class="mt-1 block w-full" value="{{ old('description', $data->description) }}" />
+                                    class="mt-1 block w-full" value="{{ old('description') }}" />
 
                             </div>
 
-                            {{-- Kolom edit thumbnail --}}
+                            {{-- Kolom Tambah thumbnail --}}
                             <div>
                                 <x-input-label for="file_input" value="Thumbnail" />
-
-                                @isset($data->thumbnail)
-                                    <img src="{{ asset(getenv('CUSTOM_THUMBNAIL_LOCATION') . $data->thumbnail) }}"
-                                        alt="thumbnail" class="w-1/4 h-1/4 rounded-md mb-4 cursor-pointer" id="thumbnail" />
-                                @else
-                                    <p class="text-gray-500">No thumbnail available</p>
-                                @endisset
 
                                 <input type="file" id="file_input" name="thumbnail"
                                     class="w-full border border-gray-300 rounded-md" />
                             </div>
 
 
-                            {{-- Kolom edit konten dengan text editor from trix --}}
+                            {{-- Kolom Tambah konten dengan text Tambahor from trix --}}
                             <div>
-                                <x-textarea-trix value="{!! old('content', $data->content) !!}" id="x"
+                                <x-textarea-trix value="{!! old('content') !!}" id="x"
                                     name="content"></x-textarea-trix>
                             </div>
 
@@ -66,11 +58,11 @@
                             <div>
                                 <x-select name="status">
                                     <option value="draft"
-                                        {{ old('status', $data->status) == 'draft' ? 'selected' : '' }}>Simpan sebagai
+                                        {{ old('status') == 'draft' ? 'selected' : '' }}>Simpan sebagai
                                         draft
                                     </option>
                                     <option value="publish"
-                                        {{ old('status', $data->status) == 'publish' ? 'selected' : '' }}>Publish
+                                        {{ old('status') == 'publish' ? 'selected' : '' }}>Publish
                                     </option>
                                 </x-select>
                             </div>
