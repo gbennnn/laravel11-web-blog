@@ -112,4 +112,9 @@ class BlogController extends Controller
     {
         //
     }
+
+
+    private function generateSlug($id, $title){
+        
+    }
 }
