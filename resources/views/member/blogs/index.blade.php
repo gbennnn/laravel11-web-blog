@@ -7,12 +7,13 @@
     
     {{-- Tombol Tambah Tulisan --}}
     <div class="pt-5 max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <h2>
-            <a href="{{ route('member.blogs.create') }}" class="bg-blue-500 p-2 rounded-md text-white text-sm flex items-center w-fit">
-                <span class="text-2xl font-extrabold mr-2">+</span>
-                Tambah Tulisan
+        <div class="flex justify-start">
+            <a href="{{ route('member.blogs.create') }}" 
+               class="ml-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex items-center text-sm sm:text-base">
+                <span class="text-xl sm:text-2xl font-extrabold mr-2">+</span>
+                <span>Tambah Tulisan</span>
             </a>
-        </h2>
+        </div>
     </div>
     
     <div class="py-12">
