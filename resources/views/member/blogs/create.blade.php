@@ -19,7 +19,7 @@
                             </p>
                         </header>
 
-                        <form method="post" action="{{ route('member.blogs.create') }}"
+                        <form method="post" action="{{ route('member.blogs.store') }}"
                             class="mt-6 space-y-6" enctype="multipart/form-data">
                             @csrf
 
