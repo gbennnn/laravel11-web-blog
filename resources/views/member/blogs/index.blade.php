@@ -4,6 +4,13 @@
             Pengaturan Blog
         </h2>
     </x-slot>
+
+    <x-slot name="headerRight">
+        <form action="{{ route('member.blogs.index') }}" method="GET">
+            <x-text-input id="search" type="text" name="search" placeholder="Cari tulisan.." value="{{ request('search') }}" class="p-1 m-0 md:w-72 w-80 mt-3 md:mt-0" />
+            <x-secondary-button type="submit" class="p-1 m-0 md:ml-2 mt-3 md:mt-0">Cari</x-secondary-button>
+        </form>
+    </x-slot>
     
     {{-- Tombol Tambah Tulisan --}}
     <div class="pt-5 max-w-7xl mx-auto sm:px-6 lg:px-8">
