@@ -5,7 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Member\BlogController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('components.front.home-page');
 });
 
 Route::get('/dashboard', function () {
