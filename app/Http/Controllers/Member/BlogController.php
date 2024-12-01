@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Member;
 
 use App\Models\Post;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -97,6 +98,7 @@ class BlogController extends Controller
      */
     public function edit(Post $post)
     {
+        Gate::authorize('edit', $post);
         // print_r($post);
         $data = $post;
 
@@ -157,6 +159,9 @@ class BlogController extends Controller
      */
     public function destroy(Post $post)
     {
+
+        Gate::authorize('delete', $post);
+
         // Hapus file thumbnail
         $thumbnailPath = public_path(getenv('CUSTOM_THUMBNAIL_LOCATION')).$post->thumbnail;
 
