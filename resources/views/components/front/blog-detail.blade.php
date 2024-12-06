@@ -40,5 +40,14 @@
                 </div>
             </div>
         </div>
+
     </div>
+
+    {{-- Paggination --}}
+    @if ($pagination['next'])
+        <a href="{{ route('blog-detail', ['slug' => $pagination['next']->slug]) }}">{{ $pagination['next']->title }}
+            &rarr;</a>
+    @else
+    @endif
+
 </x-front.layout>

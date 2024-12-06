@@ -13,12 +13,12 @@ class BlogDetailController extends Controller
         $data = Post::where('status', 'publish')->where('slug', $slug)->first();
         // $data = Post::where('status', 'publish')->where('slug', $slug)->firstOrFail();
 
-        $this->paggination($data->id);
+        $pagination = $this->pagination($data->id);
 
         return view('components.Front.blog-detail', compact('data', 'pagination'));
     }
 
-    private function paggination($id)
+    private function pagination($id)
     {
         $dataPrev = Post::where('status', 'publish')->where('id', '<', $id)->orderBy('id', 'desc')->first();
         $dataNext = Post::where('status', 'publish')->where('id', '>', $id)->orderBy('id', 'desc')->first();
@@ -27,5 +27,7 @@ class BlogDetailController extends Controller
             'prev' => $dataPrev,
             'next' => $dataNext
         ];
+
+        return $data;
     }
 }
