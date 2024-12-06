@@ -7,22 +7,23 @@
 
     <x-slot name="headerRight">
         <form action="{{ route('member.blogs.index') }}" method="GET">
-            <x-text-input id="search" type="text" name="search" placeholder="Cari tulisan.." value="{{ request('search') }}" class="p-1 m-0 md:w-72 w-80 mt-3 md:mt-0" />
+            <x-text-input id="search" type="text" name="search" placeholder="Cari tulisan.."
+                value="{{ request('search') }}" class="p-1 m-0 md:w-72 w-80 mt-3 md:mt-0" />
             <x-secondary-button type="submit" class="p-1 m-0 md:ml-2 mt-3 md:mt-0">Cari</x-secondary-button>
         </form>
     </x-slot>
-    
+
     {{-- Tombol Tambah Tulisan --}}
     <div class="pt-5 max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="flex justify-start">
-            <a href="{{ route('member.blogs.create') }}" 
-               class="ml-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex items-center text-sm sm:text-base">
+            <a href="{{ route('member.blogs.create') }}"
+                class="ml-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex items-center text-sm sm:text-base">
                 <span class="text-xl sm:text-2xl font-extrabold mr-2">+</span>
                 <span>Tambah Tulisan</span>
             </a>
         </div>
     </div>
-    
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white shadow-sm sm:rounded-lg overflow-x-auto">
@@ -54,9 +55,12 @@
                                     <td class="border px-6 py-4 text-center">
                                         <a href='{{ route('member.blogs.edit', ['post' => $value->id]) }}'
                                             class="text-blue-600 hover:text-blue-400 px-2">edit</a>
-                                        <a href='' class="text-blue-600 hover:text-blue-400 px-2">lihat</a>
+                                        <a target="blank" href="{{ route('blog-detail', ['slug' => $value->slug]) }}"
+                                            class="text-blue-600 hover:text-blue-400 px-2">lihat</a>
 
-                                        <form action="{{ route('member.blogs.destroy', ['post'=>$value->id]) }}" method="POST" onsubmit="return confirm('Yakin akan menghapus data ini?')" class="inline">
+                                        <form action="{{ route('member.blogs.destroy', ['post' => $value->id]) }}"
+                                            method="POST" onsubmit="return confirm('Yakin akan menghapus data ini?')"
+                                            class="inline">
                                             @csrf
                                             @method('delete')
                                             <button type=' submit' class='text-red-600 hover:text-red-400 px-2'>
