@@ -20,6 +20,10 @@
                 {{-- validasi judul --}}
                 @if ($data)
                     <h1 class="mt-4 mb-4">{{ $data->title }}</h1>
+                    <p>
+                        <span><i>Created By</i> <b>{{ $data->user->name }}</b> </span> <i>On</i>
+                        {{ $data->created_at->isoFormat('dddd, D MMMM Y') }}
+                    </p>
                 @else
                     {{-- <p>Data tidak ditemukan.</p> --}}
                 @endif
