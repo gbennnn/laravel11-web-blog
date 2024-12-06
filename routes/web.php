@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Front\BlogDetailController;
 use App\Http\Controllers\Front\HomepageController;
 use App\Http\Controllers\Member\BlogController;
 use App\Http\Controllers\ProfileController;
@@ -21,18 +22,18 @@ Route::middleware('auth')->group(function () {
     // Route::get('/member/blogs/{post}/edit', [BlogController::class, 'edit']);
 
     Route::resource('member/blogs', BlogController::class)->names([
-        'index'   => 'member.blogs.index',
-        'create'  => 'member.blogs.create',
-        'store'   => 'member.blogs.store',
-        'show'    => 'member.blogs.show',
-        'edit'    => 'member.blogs.edit',
-        'update'  => 'member.blogs.update',
+        'index' => 'member.blogs.index',
+        'create' => 'member.blogs.create',
+        'store' => 'member.blogs.store',
+        'show' => 'member.blogs.show',
+        'edit' => 'member.blogs.edit',
+        'update' => 'member.blogs.update',
         'destroy' => 'member.blogs.destroy',
     ])->parameters([
-        'blogs' => 'post',
-    ]); // This will create all the routes for the BlogController
+                'blogs' => 'post',
+            ]); // This will create all the routes for the BlogController
 });
 
 require __DIR__ . '/auth.php';
 
-Route::get('/{slug}');
+Route::get('/{slug}', [BlogDetailController::class, 'detail'])->name('blog-detail');

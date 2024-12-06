@@ -21,6 +21,7 @@ class BlogController extends Controller
         $search = $request->search;
         // echo $search;
         // exit();
+        
 
         // dd($user);
         $data = Post::where('user_id', $user->id)->where(function ($query) use ($search) {
