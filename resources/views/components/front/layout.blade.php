@@ -22,7 +22,7 @@
 
 <body>
     @include('components.front.navigation')
-    <!-- Page Header-->
+    <!-- Page Header -->
     <header class="masthead" style="background-image: url('assets/img/home-bg.jpg')">
         <div class="container position-relative px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-center">
@@ -77,7 +77,7 @@
                             </a>
                         </li>
                     </ul>
-                    <div class="small text-center text-muted fst-italic">Copyright &copy; Your Website 2024</div>
+                    <div class="small text-center text-muted fst-italic">Copyright &copy; Go Blog 2024</div>
                 </div>
             </div>
         </div>
