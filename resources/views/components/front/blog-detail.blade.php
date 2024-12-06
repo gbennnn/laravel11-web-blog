@@ -8,11 +8,29 @@
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
-                <img src="{{ asset(getenv('CUSTOM_THUMBNAIL_LOCATION') . $data->thumbnail) }}" alt="{{ $data->title }}"
-                    class="img-fluid">
-                <h1 class="mt-4 mb-4">{{ $data->title }}</h1>
+
+                {{-- validasi gambar --}}
+                @if ($data)
+                    <img src="{{ asset(getenv('CUSTOM_THUMBNAIL_LOCATION') . $data->thumbnail) }}"
+                        alt="{{ $data->title }}" class="img-fluid">
+                @else
+                    <p>Data tidak ditemukan atau belum di publish.</p>
+                @endif
+
+                {{-- validasi judul --}}
+                @if ($data)
+                    <h1 class="mt-4 mb-4">{{ $data->title }}</h1>
+                @else
+                    {{-- <p>Data tidak ditemukan.</p> --}}
+                @endif
+
                 <div class="mb-5">
-                    {!! $data->content !!}
+                    {{-- validasi konten --}}
+                    @if ($data)
+                        {!! $data->content !!}
+                    @else
+                        {{-- <p>Data tidak ditemukan.</p> --}}
+                    @endif
                 </div>
             </div>
         </div>
