@@ -7,6 +7,10 @@ class BlogDetailController extends Controller
 {
     public function detail($slug)
     {
-        echo ("$slug");
+        // echo ("$slug");
+
+        $data = Post::where('status', 'publish')->where('slug', $slug)->first();
+        // $data = Post::where('status', 'publish')->where('slug', $slug)->firstOrFail();
+        return view('components.Front.blog-detail', compact('data'));
     }
 }
