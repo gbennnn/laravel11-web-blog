@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers\Front;
 
+use App\Models\Post;
 use App\Http\Controllers\Controller;
 
 class BlogDetailController extends Controller
