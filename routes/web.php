@@ -6,7 +6,7 @@ use App\Http\Controllers\Member\BlogController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [HomepageController::class, 'index']);
+Route::get('/', [HomepageController::class, 'index'])->name('home');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -30,8 +30,8 @@ Route::middleware('auth')->group(function () {
         'update' => 'member.blogs.update',
         'destroy' => 'member.blogs.destroy',
     ])->parameters([
-                'blogs' => 'post',
-            ]); // This will create all the routes for the BlogController
+        'blogs' => 'post',
+    ]); // This will create all the routes for the BlogController
 });
 
 require __DIR__ . '/auth.php';
